@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Depositos
+{% endblock %}
+
+{% block container %}
+    <!-- emmet: meta lenguaje -->
+    <div class="row">
+        <!-- formulario -->
+        <div class="col-2">
+            <form action="{% url 'depositos' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label for="cantidad">Cantidad</label>
+                    <input type="number" name="cantidad" id="cantidad" class="form-control" required autofocus>
+                </div>
+
+                <div class="mb-4">
+                    <label for="saldo">Saldo</label>
+                    <input type="saldo" name="saldo" id="saldo" class="form-control" required autofocus>
+                </div>
+
+                <div class="mb-4">
+                    <label for="cliente">Cliente</label>
+                    <input type="cliente" name="cliente" id="cliente" class="form-control" required autofocus>
+                </div>
+
+                <div class="mb-2">
+                    <input type="submit" class="btn btn-success" value="Depositar">
+                </div>
+            </form>
+        </div>
+
+        <!-- jQuery -->
+
+        <!-- datos -->
+        <div class="col-9">
+            {% if messages %}
+                <div class="alert alert-success mb-2">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+                </div>
+            {% endif %}
+
+            <form action="" method="get">
+                <input type="search" name="q" value="{{ q|default_if_none:'' }}" class="form-control" placeholder="Buscar">
+            </form>
+
+            <h2 class="mt-2">Depositos: {{ depositos.count }}</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>Saldo</th>
+                        <th>Cliente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in deposito %}
+                    <tr>
+                        <td>{{ d.cantidad }}</td>
+                        <td>{{ d.saldo }}</td>
+                        <td>{{ d.cliente }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="text-danger text-center">No se encontraron resultados</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    $(function () {
+        
+        setTimeout(() => {
+            $('.alert').slideUp(function () {
+                $(this).remove();
+            });
+        }, 3000)
+
+    });
+</script>
+{% endblock  %}

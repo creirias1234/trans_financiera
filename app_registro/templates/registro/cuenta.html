@@ -1,0 +1,115 @@
+<!-- {% extends "base.html" %}
+
+{% block title %}
+    Cuenta
+{% endblock %}
+
+{% block container %}
+    #emmet: meta lenguaje 
+    <div class="row">
+         formulario 
+        <div class="col-3">
+            <form action="{% url 'clientes' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="fecha_registro">Fecha_registro</label>
+                    <input type="date" name="nombre" id="nombre" class="form-control" required autofocus>
+                </div>
+
+                <div class="mb-3">
+                    <label for="estado">Estado</label>
+                    <input type="checkbox" name="estado" id="estado" value="Activo" class="form-control" required>
+                    <input type="checkbox" name="estado" id="estado" value="Inactivo"  class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="saldo">Saldo</label>
+                    <input type="number" name="saldo" id="saldo" step="0.01" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="cliente">Cliente</label>
+                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="telefono">Telefono</label>
+                    <input type="text" name="telefono" id="telefono" class="telefonol" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="correo">Correo</label>
+                    <input type="email" name="correo" id="correo" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-success" value="Registrar Cliente">
+                </div>
+            </form>
+        </div>
+
+        # jQuery 
+
+        #datos 
+        <div class="col-9">
+            {% if messages %}
+                <div class="alert alert-success mb-2">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+                </div>
+            {% endif %}
+
+            <form action="" method="get">
+                <input type="search" name="q" value="{{ q }}" class="form-control" placeholder="Buscar participantes">
+            </form>
+
+            <h2 class="mt-3">Lista de clientes: {{ clientes.count }}</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Direccion</th>
+                        <th>Fecha_nacimiento</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in clientes %}
+                    <tr>
+                        <td>{{ p.nombre }}</td>
+                        <td>{{ p.apellido }}</td>
+                        <td>{{ p.direccion }}</td>
+                        <td>{{ p.fecha_nacimiento }}</td>
+                        <td>{{ p.telefono }}</td>
+                        <td>{{ p.correo }}</td>
+                        
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-danger text-center">No se encontraron resultados</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    $(function () {
+        
+        setTimeout(() => {
+            $('.alert').slideUp(function () {
+                $(this).remove();
+            });
+        }, 3000)
+
+    });
+</script>
+{% endblock  %}
+-->
